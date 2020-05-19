@@ -6,9 +6,9 @@ describe 'As a user' do
 
     select 'Gryffindor', from: 'house'
 
-    click 'Search for Members'
+    click_on 'Search For Members'
 
-    expect(path).to eq('/search')
+    expect(current_path).to eq('/search')
 
 
     expect(page).to have_css('.member', count: 21)
