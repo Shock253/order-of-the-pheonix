@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'As a user' do
+describe 'As a user', :vcr do
   it 'when I search using the navbar, I should see the searched members of the order of the pheonix' do
     visit '/'
 
@@ -13,9 +13,15 @@ describe 'As a user' do
 
     expect(page).to have_css('.member', count: 21)
 
-    members = find(".member")
+    members = find_all(".member")
 
-    binding.pry
+    members.each do |member|
+      within member do
+        expect(page).to have_content("Name:")
+        expect(page).to have_content("House:")
+        expect(page).to have_content("Patronus:")
+      end
+    end
   end
 end
 
