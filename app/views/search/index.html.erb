@@ -1,0 +1,16 @@
+<section class='results'>
+  <% @members.each do |member| %>
+    <br/>
+    <br/>
+    <section class="member">
+      Name: <%= member.name %><br/>
+      <% if member.role %>
+        Role: <%= member.role %><br/>
+      <% end %>
+      House: <%= member.house %><br/>
+      <% if member.patronus %>
+        Patronus: <%= member.patronus %><br/>
+      <% end %>
+    </section>
+  <% end %>
+</section>
