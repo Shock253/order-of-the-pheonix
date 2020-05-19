@@ -19,5 +19,6 @@
 .byebug_history
 lesson.md
 
+/coverage
 # Ignore application configuration
 /config/application.yml
