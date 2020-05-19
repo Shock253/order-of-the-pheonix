@@ -1,10 +1,16 @@
 class PotterService
-
   def search_pheonix_members(house)
     response = conn.get("characters?key=#{ENV['POTTER_KEY']}") do |faraday|
       faraday.params['house'] = house
       faraday.params['orderOfThePhoenix'] = true
     end
+    json = get_json(response)
+
+    members = []
+    json.each do |member_data|
+      members << Member.new(member_data)
+    end
+    members
   end
 
   private
